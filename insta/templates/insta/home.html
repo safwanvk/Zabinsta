@@ -28,7 +28,7 @@
                 <div class="photo__info">
                     <div class="photo__icons">
                         <span class="photo__icon">
-                            <i class="fa fa-heart-o heart fa-lg"></i>
+                            <a href="{% url 'insta:like_toggle' post.id %}" class="like-btn" data-href="{% url 'insta:like_api_toggle' post.id %}"  data-likes={{ post.likes.count }}><i class="fa fa-heart-o heart fa-lg"></i></a>
                         </span>
                         <span class="photo__icon">
                             <i class="fa fa-comment-o fa-lg"></i>
