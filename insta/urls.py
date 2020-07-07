@@ -1,7 +1,7 @@
 
 from django.urls import path
 
-from insta.views import PostListView, PostDetailView, PostCreateView, PostUpdateView
+from insta.views import PostListView, PostDetailView, PostCreateView, PostUpdateView, PostDeleteView
 
 app_name = 'insta'
 
@@ -14,6 +14,6 @@ urlpatterns = [
     path('', PostListView.as_view(), name='post_list'),
     path('detail/<int:id>', PostDetailView.as_view(), name='post_detail'),
     path('new/', PostCreateView.as_view(), name='post_new'),
-    path('update/<int:id>/', PostUpdateView.as_view(), name='post_update')
-
+    path('update/<int:id>/', PostUpdateView.as_view(), name='post_update'),
+    path('delete/<int:id>/', PostDeleteView.as_view(), name='post_delete'),
 ]

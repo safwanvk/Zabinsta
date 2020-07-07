@@ -1,8 +1,9 @@
 from django.shortcuts import render, get_object_or_404
 
 # Create your views here.
+from django.urls import reverse
 from django.utils import timezone
-from django.views.generic import ListView, DetailView, CreateView, UpdateView
+from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 
 from insta.forms import PostForm
 from insta.models import Post
@@ -46,3 +47,13 @@ class PostUpdateView(UpdateView):
             form.instance.author = self.request.user
             return super().form_valid(form)
 
+
+class PostDeleteView(DeleteView):
+    template_name = 'insta/delete.html'
+
+    def get_object(self):
+        id_=self.kwargs.get("id")
+        return get_object_or_404(Post, id=id_)
+
+    def get_success_url(self):
+        return reverse('insta:post_list')
