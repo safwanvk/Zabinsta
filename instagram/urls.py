@@ -21,6 +21,7 @@ from instagram import settings
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', include('insta.urls'))
+    path('post/', include('insta.urls')),
+    path('', include('accounts.urls'))
 ]
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

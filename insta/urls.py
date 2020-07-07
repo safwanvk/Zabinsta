@@ -1,14 +1,9 @@
-
 from django.urls import path
 
 from insta.views import PostListView, PostDetailView, PostCreateView, PostUpdateView, PostDeleteView, PostLikeAPIToggle, \
     PostLikeToggle
 
 app_name = 'insta'
-
-
-
-
 
 urlpatterns = [
 
