@@ -126,6 +126,10 @@ STATIC_URL = '/static/'
 STATIC_FILES_DIRS = [
     os.path.join(BASE_DIR, 'static')
 ]
+
+LOGIN_REDIRECT_URL = 'insta:post_list'
+LOGOUT_REDIRECT_URL = '/'
+
 MEDIA_URL = '/images/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'static/images')
 
