@@ -1,8 +1,11 @@
-from django.shortcuts import render
+from django.contrib.auth.models import User
+from django.shortcuts import render, get_object_or_404
 
 # Create your views here.
 from django.shortcuts import redirect, render
 from django.urls import reverse
+from django.utils import timezone
+from django.views.generic import DetailView
 
 from . forms import UserCreationForm
 
@@ -15,3 +18,19 @@ def register_view(request):
             form.save()
             return redirect(reverse('accounts:login'))
     return render(request, 'accounts/register.html', {'form': form})
+
+
+class Profile(DetailView):
+    template_name = 'accounts/profile.html'
+    queryset = User.objects.all()
+    success_url = '/'
+
+    def get_object(self):
+        id_ = self.kwargs.get("username")
+        user = get_object_or_404(User, username=id_)
+        # print(request.user)
+        # print(user.profile.followed_by.all()[0])
+        # print(type(user.profile.followed_by.all()[0]))
+        return user
+
+
