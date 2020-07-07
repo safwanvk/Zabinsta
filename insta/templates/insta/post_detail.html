@@ -1,4 +1,7 @@
+{% extends 'insta/base.html' %}
+{% load static %}
 {% block content %}
+<body>
        <main class="image-detail">
             <section class="image">
                 <div class="image__file-container">
@@ -42,4 +45,6 @@
                 </div>
             </section>
         </main>
+{% include 'insta/footer.html' %}
+</body>
 {% endblock %}
