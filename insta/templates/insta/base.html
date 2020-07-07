@@ -1,39 +1,52 @@
 {% load static %}
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    
-    <!-- <link rel="stylesheet" href="static/css/insta.css"> -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link href="https://fonts.googleapis.com/css?family=Noto+Serif&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
-    <link rel="stylesheet" href="{% static 'css/style.css' %}">
-    <title>{% block title%}{% endblock %}</title>
-</head>
-<body>
-    <header>
-        <div class="navigation">
-            <div class="instalogo">
-                <a href="Home.html"><i class="fab fa-instagram"></i> </a>
-                <a class="vl"></a>
-                <a href="">Instagrampy</a>
-            </div>
-            <div class="search_bar">
+    <head>
+        <meta charset="UTF-8">
+        <title>Feed | Instaclone</title>
+        <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+        <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon">
+        <link href="{% static 'css/style.css' %}" rel="stylesheet">
+        <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    </head>
+    <body>
+        <nav class="navigation">
+            <a href="feed.html">
+                <img
+                    src="{% static 'images/navLogo.png' %}"
+                    alt="logo"
+                    title="logo"
+                    class="navigation__logo"
+                />
+            </a>
+            <div class="navigation__search-container">
+                <i class="fa fa-search"></i>
                 <input type="text" placeholder="Search">
-                <a href="search"><i class="fas fa-search"></i></a>
             </div>
-            <div class="contact_icons">
-                <a href="explore"><i class="far fa-compass"></i></a>
-                <a href="likes"> <i class="far fa-heart"></i> </a>
-                <a href="profile"> <i class="far fa-user"></i> </a>
+            <div class="navigation__icons">
+                <a href="explore.html" class="navigation__link">
+                    <i class="fa fa-compass"></i>
+                </a>
+                <a href="#" class="navigation__link">
+                    <i class="fa fa-heart-o"></i>
+                </a>
+                <a href="profile.html" class="navigation__link">
+                    <i class="fa fa-user-o"></i>
+                </a>
             </div>
-        </div>
-    </header>
-    <div class="content-container">
-        {% block content %}
-        {%endblock%}
+        </nav>
 
-    </div>
-</body>
+        {% block content %}
+
+
+        {% endblock %}
+
+
+
+       <script
+  src="https://code.jquery.com/jquery-3.2.1.min.js"
+  integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+  crossorigin="anonymous"></script>
+        <script src="{% static 'js/app.js' %}"></script>
+    </body>
 </html>

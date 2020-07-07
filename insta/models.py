@@ -19,6 +19,14 @@ class Post(models.Model):
         return self.caption
 
     @property
+    def imageURL(self):
+        try:
+            url = self.image.url
+        except:
+            url = ''
+        return url
+
+    @property
     def published(self):
         created_dates = self.created_date.replace(tzinfo=None)
         Now = datetime.now()

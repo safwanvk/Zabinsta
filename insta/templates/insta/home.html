@@ -1,43 +1,62 @@
 {% extends 'insta/base.html' %}
+{% load static %}
 {%block title%} Instagrampy {% endblock %}
 
 {% block content %}
-{% for post in posts %}
-    <div class="card">
-        <div class="card_header">
-            <div class="profile_image">
-                
-            </div>
-            <div class="post_info">
-                <div class="post_name">{{ post.author }}</div>
-                <div class="post_location">Kuala Lumpure</div>
-            </div>
-            <div class="post_options"><a href=""><i class="fas fa-ellipsis-h"></i></a></div>
-        </div>
-        <div class="post_image">
-            {% if post.image != None %}
-                <img src="media/Hi_instagram_STLw1dr.png" alt="Photo">
-            {% endif %}
-        </div>
-        <div class="engagement">
-            <a href=""><i class="fas fa-heart"></i></a>
-            <a href=""><i class="far fa-comment"></i></a>
-            <a href=""><i class="far fa-share-square"></i></a>
-            <a href=""><i class="far fa-bookmark"></i></a>
-        </div>
-        <div class="likes">
-          <a href="#">310 likes</a>
-        </div>
-        <div class="caption">
-            <a href=""><h2>{{ post.author }}</h2></a>
-            <span><p>{{ post.caption }}</p></span>
-        </div>
-
-        <div class="time_posted">
-            {{ post.published_date }}
-        </div>
-
-    </div>
-
-{% endfor %}
+<body>
+      <main class="feed">
+          {% for post in posts %}
+            <section class="photo">
+                <header class="photo__header">
+                    <div class="photo__header-column">
+                        <img
+                            class="photo__avatar"
+                            src="{% static 'images/avatar.jpg' %}"
+                        />
+                    </div>
+                    <div class="photo__header-column">
+                        <span class="photo__username">{{ post.author }}</span>
+                        <span class="photo__location">European Art of Living Center - Bad Antogast</span>
+                    </div>
+                </header>
+                <div class="photo__file-container">
+                    <img
+                        class="photo__file"
+                        src="{{ post.imageURL }}"
+                    />
+                </div>
+                <div class="photo__info">
+                    <div class="photo__icons">
+                        <span class="photo__icon">
+                            <i class="fa fa-heart-o heart fa-lg"></i>
+                        </span>
+                        <span class="photo__icon">
+                            <i class="fa fa-comment-o fa-lg"></i>
+                        </span>
+                    </div>
+                    <span class="photo__likes">35 likes</span>
+                    <ul class="photo__comments">
+                        <li class="photo__comment">
+                            <span class="photo__comment-author">{{ post.author }}</span>{{ post.caption }}
+                        </li>
+                    </ul>
+                    <ul class="photo__comments">
+                        <li class="photo__comment">
+                            <span class="photo__comment-author">serranoarevalo</span>wow this is great!
+                        </li>
+                        <li class="photo__comment">
+                            <span class="photo__comment-author">lynn</span>no is not!
+                        </li>
+                    </ul>
+                    <span class="photo__time-ago">{{ post.published_date }}</span>
+                    <div class="photo__add-comment-container">
+                        <textarea placeholder="Add a comment..." class="photo__add-comment"></textarea>
+                        <i class="fa fa-ellipsis-h"></i>
+                    </div>
+                </div>
+            </section>
+          {% endfor %}
+      </main>
+      {% include 'insta/footer.html' %}
+</body>
 {% endblock %}
