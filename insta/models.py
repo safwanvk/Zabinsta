@@ -4,6 +4,7 @@ from django.contrib.auth.models import User
 from django.db import models
 
 # Create your models here.
+from django.urls import reverse
 from django.utils import timezone
 
 
@@ -13,6 +14,9 @@ class Post(models.Model):
     caption = models.TextField()
     likes = models.ManyToManyField(User, blank=True, related_name='post_likes')
     created_date = models.DateTimeField(default=timezone.now)
+
+    def get_absolute_url(self):
+        return reverse('insta:post_detail', kwargs={"id": self.id})
 
     def __str__(self):
         return self.caption
@@ -24,3 +28,4 @@ class Post(models.Model):
         except:
             url = ''
         return url
+

@@ -20,10 +20,10 @@
                     </div>
                 </header>
                 <div class="photo__file-container">
-                    <img
+                    <a href="{{ post.get_absolute_url }}"><img
                         class="photo__file"
-                        src="{{ post.imageURL }}"
-                    />
+                        src="{{ post.imageURL }}">
+                    </a>
                 </div>
                 <div class="photo__info">
                     <div class="photo__icons">
