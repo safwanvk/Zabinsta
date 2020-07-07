@@ -4,11 +4,12 @@
 
 
 {% block content %}
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 <body class="no-padding">
         <main class="login">
             <div class="login__column">
                 <img
-                    src="images/phone.png"
+                    src="{% static 'images/phone.png' %}"
                     alt="Phone Image"
                     title="Phone Image"
                     class="login__phone-image"
@@ -17,19 +18,19 @@
             <section class="login__column">
                 <div class="login__section login__sign-in">
                     <img
-                        src="images/logo.png"
+                        src="{% static 'images/logo.png' %}"
                         alt="Logo"
                         title="Logo"
                         class="login__logo"
                     />
                     <!-- x   -->
-                    <form method="GET" class="login__form">
-                       {% csrf_token %}
+                    <form method="POST" class="login__form">
+                        {% csrf_token %}
                         {{ form|crispy }}
                         <div class="login__input-container">
                             <input
                                 type="submit"
-                                value="Log in"
+                                value="Sign up"
                                 class="login__input login__input--btn"
                             />
                         </div>
@@ -41,9 +42,9 @@
                 </div>
                 <div class="login__section login__sign-up">
                     <span class="login__text">
-                        Don't have an account?
+                        Have an account?
                         <a href="#" class="login__link">
-                            Sign up
+                            Login
                         </a>
                     </span>
                 </div>
@@ -53,13 +54,13 @@
                     </span>
                     <div class="login__appstores">
                         <img
-                            src="images/ios.png"
+                            src="{% static 'images/ios.png' %}"
                             alt="iOS"
                             title="Get the app!"
                             class="login__appstore"
                         />
                         <img
-                            src="images/android.png"
+                            src="{% static 'images/android.png' %}"
                             alt="Android"
                             title="Get the app!"
                             class="login__appstore"
