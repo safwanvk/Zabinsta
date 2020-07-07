@@ -55,7 +55,17 @@
                     </div>
                 </div>
             </section>
-          {% endfor %}
+           {% empty %}
+		      <p>No post yet</p>
+           {% endfor %}
+            {% if is_paginated %}
+    <div class="pagination">
+        {% if page_obj.has_next %}
+        <a href="?page={{ page_obj.next_page_number }}">More &raquo;</a>
+        {% endif %}
+    </div>
+{% endif %}
+
       </main>
       {% include 'insta/footer.html' %}
 </body>
