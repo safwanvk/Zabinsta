@@ -22,11 +22,14 @@ Detail Feed
                             <span class="image__location">{{ post.caption }}</span>
                         </div>
                     </header>
-                    <ul class="image__comments">
-                        <li class="image__comment">
-                            <span class="image__comment-author">serranoarevalo</span> Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                    <span class="photo__likes">{{ post.comments.count }} comments</span>
+                     {% for comment in post.comments.all %}
+                    <ul class="photo__comments">
+                        <li class="photo__comment">
+                            <span class="photo__comment-author">{{ comment.commenter }}</span>{{ comment.body }}
                         </li>
                     </ul>
+                    {% endfor %}
                     <div class="image__actions">
                         <span class="image__action">
                             <i class="fa fa-heart-o fa-lg"></i>
