@@ -2,15 +2,17 @@ from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, get_object_or_404
 
 # Create your views here.
-from django.urls import reverse
+from django.urls import reverse, reverse_lazy
 from django.utils import timezone
 from django.utils.decorators import method_decorator
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView, RedirectView
 
-from insta.forms import PostForm
-from insta.models import Post
+from insta.forms import PostForm, CommentForm
+from insta.models import Post, Comment
 
 method_decorator(login_required())
+
+
 class PostListView(ListView):
     template_name = 'insta/home.html'
     queryset = Post.objects.all().filter(created_date__lte=timezone.now()).order_by('-created_date')
@@ -112,3 +114,18 @@ class PostLikeAPIToggle(APIView):
             "liked": liked
         }
         return Response(data)
+
+
+class CommentCreateView(CreateView):
+    model = Comment
+    form_class = CommentForm
+    template_name = "insta/create_comment.html"
+
+    def get_success_url(self):
+        return reverse_lazy('insta:post_list')
+
+    def form_valid(self, form):
+        form.instance.commenter = self.request.user
+        form.instance.post = Post.objects.get(pk=self.kwargs['pk'])
+        form.save()
+        return super(CommentCreateView, self).form_valid(form)

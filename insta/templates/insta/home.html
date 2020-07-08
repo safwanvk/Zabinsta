@@ -1,5 +1,6 @@
 {% extends 'insta/base.html' %}
 {% load static %}
+{% load crispy_forms_filters %}
 {% block title %}
 Feed
 {% endblock%}
@@ -46,18 +47,10 @@ Feed
                             <span class="photo__comment-author"><a href="{% url 'accounts:user_profile' post.author.username %}">{{ post.author }}</a></span>{{ post.caption | linebreaksbr | truncatechars:60 }}
                         </li>
                     </ul>
-                    <span class="photo__likes">{{ post.comments.count }} comments</span>
-                    {% for comment in post.comments.all %}
-                    <ul class="photo__comments">
-                        <li class="photo__comment">
-                            <span class="photo__comment-author">{{ comment.commenter }}</span>{{ comment.body }}
-                        </li>
-                    </ul>
-                    {% endfor %}
+                    <span class="photo__likes"><a href="{{ post.get_absolute_url }}">view all {{ post.comments.count }} comments</a></span>
                     <span class="photo__time-ago">{{ post.created_date | timesince }} ago</span>
-                    <div class="photo__add-comment-container">
-                        <textarea placeholder="Add a comment..." class="photo__add-comment"></textarea>
-                        <i class="fa fa-ellipsis-h"></i>
+                    <div>
+                        <a href="{% url 'insta:create_comment' post.id %}">Add a comment...</a>
                     </div>
                 </div>
             </section>
