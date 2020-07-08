@@ -10,38 +10,13 @@
         <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     </head>
     <body>
-        <nav class="navigation">
-            <a href="feed.html">
-                <img
-                    src="{% static 'images/navLogo.png' %}"
-                    alt="logo"
-                    title="logo"
-                    class="navigation__logo"
-                />
-            </a>
-            <div class="navigation__search-container">
-                <i class="fa fa-search"></i>
-                <input type="text" placeholder="Search">
-            </div>
-            <div class="navigation__icons">
-                <a href="explore.html" class="navigation__link">
-                    <i class="fa fa-compass"></i>
-                </a>
-                <a href="#" class="navigation__link">
-                    <i class="fa fa-heart-o"></i>
-                </a>
-                <a href="profile.html" class="navigation__link">
-                    <i class="fa fa-user-o"></i>
-                </a>
-            </div>
-        </nav>
 
         {% block content %}
 
 
         {% endblock %}
 
-
+       {% include 'insta/nav.html' %}
 
        <script
   src="https://code.jquery.com/jquery-3.2.1.min.js"

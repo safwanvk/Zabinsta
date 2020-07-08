@@ -11,11 +11,11 @@
                     <div class="photo__header-column">
                         <img
                             class="photo__avatar"
-                            src="{% static 'images/avatar.jpg' %}"
+                            src="{{ post.author.profile.profile_photo.url }}"
                         />
                     </div>
                     <div class="photo__header-column">
-                        <span class="photo__username">{{ post.author }}</span>
+                        <span class="photo__username"><a href="{% url 'accounts:user_profile' post.author.username %}">{{ post.author }}</a></span>
                         <span class="photo__location">European Art of Living Center - Bad Antogast</span>
                     </div>
                 </header>
@@ -37,7 +37,7 @@
                     <span class="photo__likes">{{ post.likes.count }} likes</span>
                     <ul class="photo__comments">
                         <li class="photo__comment">
-                            <span class="photo__comment-author">{{ post.author }}</span>{{ post.caption | linebreaksbr | truncatechars:60 }}
+                            <span class="photo__comment-author"><a href="{% url 'accounts:user_profile' post.author.username %}">{{ post.author }}</a></span>{{ post.caption | linebreaksbr | truncatechars:60 }}
                         </li>
                     </ul>
                     <ul class="photo__comments">

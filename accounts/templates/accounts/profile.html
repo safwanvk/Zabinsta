@@ -18,13 +18,12 @@
                         <div class="profile__name">
                             <h1 class="profile__title">{{ user.username }}</h1>
                                 {% if request.user == user %}
-                                <button type="button"><a href="">Edit profile</a></button>
+                                <button type="button"><a href="{% url 'accounts:edit_profile' %}">Edit profile</a></button>
                                 {% elif request.user.profile not in user.profile.followed_by.all %}
                                 <button type="button"><a class="follow_button" href="{% url 'accounts:follow_profile' user.id  %}" follow-href="{% url 'accounts:follow_profile' user.id %}" data-follow={{ user.profile.followed_by.count }} >Follow</a></button>
                                 {% elif request.user.profile in user.profile.followed_by.all %}
                                 <button type="button"><a class="follow_button" href="{% url 'accounts:follow_profile' user.id %}" follow-href="{% url 'accounts:follow_profile' user.id %}" data-follow={{ user.profile.followed_by.count }}  >Following</a></button>
                                 {% endif %}
-                            <i class="fa fa-cog fa-2x" id="cog"></i>
                         </div>
                         <ul class="profile__numbers">
                             <li class="profile__posts">
