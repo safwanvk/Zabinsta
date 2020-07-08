@@ -42,3 +42,5 @@ class Profile(DetailView):
             'posts': user.posts.all().filter(created_date__lte=timezone.now()).order_by('-created_date')
         })
         return context
+
+
