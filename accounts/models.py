@@ -5,7 +5,7 @@ from django.db import models
 
 # Create your models here.
 class Profile(models.Model):
-    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
     # CASCADE means if the user is deleted then delete the profile
     profile_photo = models.ImageField(upload_to='profile_pics')
     name = models.CharField(max_length=50)

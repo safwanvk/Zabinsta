@@ -16,113 +16,45 @@
                     </div>
                     <div class="profile__info">
                         <div class="profile__name">
-                            <h1 class="profile__title">serranoarevalo</h1>
+                            <h1 class="profile__title">{{ user.username }}</h1>
                             <a href="edit-profile.html" class="profile__button u-fat-text">Edit profile</a>
                             <i class="fa fa-cog fa-2x" id="cog"></i>
                         </div>
                         <ul class="profile__numbers">
                             <li class="profile__posts">
-                                <span class="profile__number u-fat-text">10</span> posts
+                                <span class="profile__number u-fat-text">{{ user.posts.count }}</span> posts
                             </li>
                             <li class="profile__followers">
-                                <span class="profile__number u-fat-text">40</span> followers
+                                <span class="profile__number u-fat-text">0</span> followers
                             </li>
                             <li class="profile__following">
-                                <span class="profile__number u-fat-text">134</span> following
+                                <span class="profile__number u-fat-text">0</span> following
                             </li>
                         </ul>
                         <div class="profile__bio">
-                            <span class="profile__full-name u-fat-text">Nicolás Serrano Arévalo</span>
-                            <p class="profile__full-bio">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fugit rerum consequuntur aperiam, dicta delectus nihil voluptas explicabo sapiente quisquam. Eius ipsam asperiores excepturi maiores, atque voluptatum sed fuga esse molestiae.</p>
+                            <span class="profile__full-name u-fat-text">{{ user.profile.name }}</span>
+                            <p class="profile__full-bio">{{ user.profile.bio|linebreaks }}</p>
                             <a href="http://serranoarevalo.com" class="profile__link u-fat-text">serranoarevalo.com</a>
                         </div>
                     </div>
                 </header>
                 <div class="profile__pictures">
+                     {% for post in posts %}
                     <a href="image-detail.html" class="profile-picture">
                         <img
-                            src="images/feedPhoto.jpg"
+                            src="{{ post.image.url }}"
                             class="profile-picture__picture"
                         />
                         <div class="profile-picture__overlay">
                             <span class="profile-picture__number">
-                                <i class="fa fa-heart"></i> 450
+                                <i class="fa fa-heart"></i> {{ post.likes.count }}
                             </span>
                             <span class="profile-picture__number">
                                 <i class="fa fa-comment"></i> 39
                             </span>
                         </div>
                     </a>
-                    <a href="image-detail.html" class="profile-picture">
-                        <img
-                            src="images/feedPhoto.jpg"
-                            class="profile-picture__picture"
-                        />
-                        <div class="profile-picture__overlay">
-                            <span class="profile-picture__number">
-                                <i class="fa fa-heart"></i> 450
-                            </span>
-                            <span class="profile-picture__number">
-                                <i class="fa fa-comment"></i> 39
-                            </span>
-                        </div>
-                    </a>
-                    <a href="image-detail.html" class="profile-picture">
-                        <img
-                            src="images/feedPhoto.jpg"
-                            class="profile-picture__picture"
-                        />
-                        <div class="profile-picture__overlay">
-                            <span class="profile-picture__number">
-                                <i class="fa fa-heart"></i> 450
-                            </span>
-                            <span class="profile-picture__number">
-                                <i class="fa fa-comment"></i> 39
-                            </span>
-                        </div>
-                    </a>
-                    <a href="image-detail.html" class="profile-picture">
-                        <img
-                            src="images/feedPhoto.jpg"
-                            class="profile-picture__picture"
-                        />
-                        <div class="profile-picture__overlay">
-                            <span class="profile-picture__number">
-                                <i class="fa fa-heart"></i> 450
-                            </span>
-                            <span class="profile-picture__number">
-                                <i class="fa fa-comment"></i> 39
-                            </span>
-                        </div>
-                    </a>
-                    <a href="image-detail.html" class="profile-picture">
-                        <img
-                            src="images/feedPhoto.jpg"
-                            class="profile-picture__picture"
-                        />
-                        <div class="profile-picture__overlay">
-                            <span class="profile-picture__number">
-                                <i class="fa fa-heart"></i> 450
-                            </span>
-                            <span class="profile-picture__number">
-                                <i class="fa fa-comment"></i> 39
-                            </span>
-                        </div>
-                    </a>
-                    <a href="image-detail.html" class="profile-picture">
-                        <img
-                            src="images/feedPhoto.jpg"
-                            class="profile-picture__picture"
-                        />
-                        <div class="profile-picture__overlay">
-                            <span class="profile-picture__number">
-                                <i class="fa fa-heart"></i> 450
-                            </span>
-                            <span class="profile-picture__number">
-                                <i class="fa fa-comment"></i> 39
-                            </span>
-                        </div>
-                    </a>
+                    {% endfor %}
                 </div>
             </section>
         </main>

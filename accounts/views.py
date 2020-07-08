@@ -33,4 +33,12 @@ class Profile(DetailView):
         # print(type(user.profile.followed_by.all()[0]))
         return user
 
-
+    def get_context_data(self, *args, **kwargs):
+        context = super(Profile, self).get_context_data(*args, **kwargs)
+        # user_id = self.kwargs.get('id')
+        # user = get_object_or_404(User,id=user_id)
+        user = self.get_object()
+        context.update({
+            'posts': user.posts.all().filter(created_date__lte=timezone.now()).order_by('-created_date')
+        })
+        return context
