@@ -56,7 +56,7 @@ def edit_profile(request):
             profile_form.save()
 
             messages.success(request, f'Your account has been updated successfully!')
-            return redirect('profile')
+            return redirect('insta:post_list')
 
     else:
         user_form = UserUpdateForm(instance=request.user)
