@@ -1,9 +1,14 @@
 {% extends 'insta/base.html' %}
 {% load crispy_forms_filters %}
 {% load static %}
-
+{% block title %}
+Profile
+{% endblock%}
 
 {% block content %}
+<body>
+{% include 'insta/nav.html' %}
+
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
         <main class="profile-container">
             <section class="profile">
@@ -39,13 +44,16 @@
                         <div class="profile__bio">
                             <span class="profile__full-name u-fat-text">{{ user.profile.name }}</span>
                             <p class="profile__full-bio">{{ user.profile.bio|linebreaks }}</p>
-                            <a href="http://serranoarevalo.com" class="profile__link u-fat-text">serranoarevalo.com</a>
                         </div>
+                         <div class="profile_options">
+                             <a href="{% url 'insta:post_new' %}"><i class="fa fa-plus-o fa-lg"></i> NEW</a>&nbsp;&nbsp;&nbsp;&nbsp;
+                             <a href=""><i class="fa fa-bookmark-o fa-lg"></i> SAVE</a>
+                         </div>
                     </div>
                 </header>
                 <div class="profile__pictures">
                      {% for post in posts %}
-                    <a href="image-detail.html" class="profile-picture">
+                    <a href="#" class="profile-picture">
                         <img
                             src="{{ post.image.url }}"
                             class="profile-picture__picture"
@@ -63,4 +71,6 @@
                 </div>
             </section>
         </main>
+{% include 'insta/footer.html' %}
+</body>
 {% endblock %}

@@ -1,7 +1,11 @@
 {% extends 'insta/base.html' %}
 {% load static %}
+{% block title %}
+Detail Feed
+{% endblock%}
 {% block content %}
 <body>
+{% include 'insta/nav.html' %}
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
        <main class="image-detail">
             <section class="image">
@@ -13,12 +17,6 @@
                 </div>
                 <div class="image__info">
                     <header class="image__header">
-                        <div class="image__avatar-container">
-                            <img
-                                src="{{ post.author.profile.profile_photo.url }}"
-                                class="image__avatar"
-                            />
-                        </div>
                         <div class="image__info">
                             <span class="image__author">{{ post.author }}</span>
                             <span class="image__location">{{ post.caption }}</span>
@@ -36,6 +34,9 @@
                         <span class="image__action">
                             <i class="fa fa-comment-o fa-lg"></i>
                         </span>
+                        <span class="photo__icon">
+                            <i class="fa fa-bookmark-o fa-lg"></i>
+                        </span>
                     </div>
                     <span class="image__likes">{{ post.likes.count }} likes</span>
                     <span class="image__date"> {{ post.created_date | timesince }} ago</span>
@@ -45,8 +46,8 @@
                     </div>
                 </div>
                 {% if post.author == user %}
-                <a href="{% url 'insta:post_update' id=post.pk %}" class="btn btn-primary btn-sm">edit</a>
-                <a href="{% url 'insta:post_delete' id=post.pk %}" class="btn btn-danger btn-sm">delete</a>
+                <a href="{% url 'insta:post_update' id=post.pk %}" class="btn btn-outline-info btn-sm">edit</a>
+                <a href="{% url 'insta:post_delete' id=post.pk %}" class="btn btn-outline-danger btn-sm">delete</a>
                 {% endif %}
             </section>
         </main>

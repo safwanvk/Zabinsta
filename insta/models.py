@@ -11,6 +11,7 @@ from django.utils import timezone
 class Post(models.Model):
     author = models.ForeignKey(User, on_delete=models.CASCADE, related_name='posts')
     image = models.ImageField(blank=True, null=True)
+    location = models.CharField(max_length=100, blank=True, null=True)
     caption = models.TextField()
     likes = models.ManyToManyField(User, blank=True, related_name='post_likes')
     created_date = models.DateTimeField(default=timezone.now)

@@ -22,5 +22,8 @@
                 <a href="{% url 'accounts:user_profile' user.username %}" class="navigation__link">
                     <i class="fa fa-user-o"></i>
                 </a>
+                <a href="{% url 'accounts:logout' %}" class="navigation__link">
+                    Sign out
+                </a>
             </div>
         </nav>

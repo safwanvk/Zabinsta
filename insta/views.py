@@ -10,7 +10,7 @@ from django.views.generic import ListView, DetailView, CreateView, UpdateView, D
 from insta.forms import PostForm
 from insta.models import Post
 
-
+method_decorator(login_required())
 class PostListView(ListView):
     template_name = 'insta/home.html'
     queryset = Post.objects.all().filter(created_date__lte=timezone.now()).order_by('-created_date')
