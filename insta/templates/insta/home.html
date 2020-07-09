@@ -13,10 +13,10 @@ Feed
             <section class="photo">
                 <header class="photo__header">
                     <div class="photo__header-column">
-                        <img
+                        <a href="{% url 'accounts:user_profile' post.author.username %}"><img
                             class="photo__avatar"
                             src="{{ post.author.profile.profile_photo.url }}"
-                        />
+                        /></a>
                     </div>
                     <div class="photo__header-column">
                         <span class="photo__username"><a href="{% url 'accounts:user_profile' post.author.username %}">{{ post.author }}</a></span>
@@ -38,7 +38,7 @@ Feed
                             <i class="fa fa-comment-o fa-lg"></i>
                         </span>&nbsp;
                         <span class="photo__icon">
-                            <i class="fa fa-bookmark-o fa-lg"></i>
+                            <i class="fa fa-share-square-o fa-lg"></i>
                         </span>
                     </div>
                     <span class="photo__likes">{{ post.likes.count }} likes</span>

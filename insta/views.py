@@ -1,11 +1,12 @@
 from django.contrib.auth.decorators import login_required
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, redirect
 
 # Create your views here.
 from django.urls import reverse, reverse_lazy
 from django.utils import timezone
 from django.utils.decorators import method_decorator
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView, RedirectView
+
 
 from insta.forms import PostForm, CommentForm
 from insta.models import Post, Comment
@@ -129,3 +130,6 @@ class CommentCreateView(CreateView):
         form.instance.post = Post.objects.get(pk=self.kwargs['pk'])
         form.save()
         return super(CommentCreateView, self).form_valid(form)
+
+
+

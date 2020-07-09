@@ -1,6 +1,7 @@
 from django.contrib.auth.decorators import login_required
 from django.urls import path
 
+from insta import views
 from insta.views import PostListView, PostDetailView, PostCreateView, PostUpdateView, PostDeleteView, PostLikeAPIToggle, \
     PostLikeToggle, CommentCreateView
 
@@ -16,4 +17,5 @@ urlpatterns = [
     path('<int:id>/likes/', PostLikeToggle.as_view(), name='like_toggle'),
     path('api/<int:id>/likes/', PostLikeAPIToggle.as_view(), name='like_api_toggle'),
     path('create-comment/<pk>', CommentCreateView.as_view(), name='create_comment'),
+
 ]

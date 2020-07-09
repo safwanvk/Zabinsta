@@ -7,6 +7,8 @@ from django.shortcuts import redirect, render
 from django.urls import reverse
 from django.utils import timezone
 from django.views.generic import DetailView
+from .models import Profile as ProfileModel
+
 
 from .forms import UserCreationForm, UserUpdateForm, ProfileUpdateForm
 from rest_framework.views import APIView
@@ -110,3 +112,6 @@ class ProfileFollowAPIToggle(APIView):
         }
         print(data)
         return Response(data)
+
+
+

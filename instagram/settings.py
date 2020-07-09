@@ -40,7 +40,8 @@ INSTALLED_APPS = [
     'insta',
     'crispy_forms',
     'accounts',
-    'rest_framework'
+    'rest_framework',
+    'django_filters'
 
 ]
 
