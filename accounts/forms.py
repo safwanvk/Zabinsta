@@ -12,7 +12,7 @@ class UserCreationForm(UserCreationForm):
         model = User
         fields = ['username',
                   'email',
-                  'password',
+                  'password1',
                   'password2',
                   ]
 

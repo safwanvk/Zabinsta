@@ -69,7 +69,7 @@ def edit_profile(request):
 
     else:
         user_form = UserUpdateForm(instance=request.user)
-        profile_form = ProfileUpdateForm(instance=request.user.profile)
+        profile_form = ProfileUpdateForm(instance=request.user)
     context = {
         'user_form': user_form,
         'profile_form': profile_form,
