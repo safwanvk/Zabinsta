@@ -7,16 +7,13 @@ from django.utils import timezone
 from django.utils.decorators import method_decorator
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView, RedirectView
 
-
 from insta.forms import PostForm, CommentForm
 from insta.models import Post, Comment
-
-method_decorator(login_required())
 
 
 class PostListView(ListView):
     template_name = 'insta/home.html'
-    queryset = Post.objects.all().filter(created_date__lte=timezone.now()).order_by('-created_date')
+    queryset = Post.objects.all().filter().order_by('-created_date')
     context_object_name = 'posts'
     paginate_by = 10
 
@@ -130,6 +127,3 @@ class CommentCreateView(CreateView):
         form.instance.post = Post.objects.get(pk=self.kwargs['pk'])
         form.save()
         return super(CommentCreateView, self).form_valid(form)
-
-
-
