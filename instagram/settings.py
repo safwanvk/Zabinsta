@@ -24,7 +24,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = '77v)ez1#llfffz(1b)&b4e9-q_4ly1^)(b228(58rtauqli4%2'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['https://zabinsta.herokuapp.com', 'localhost', '127.0.0.1']
 
